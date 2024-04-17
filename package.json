@@ -1,15 +1,12 @@
 {
   "name": "pine-utils",
-  "version": "0.0.43",
+  "version": "0.0.44",
   "description": "pine 公共方法",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
   "module": "./dist/index.es.js",
   "preview": false,
   "type": "module",
-  "workspaces": [
-    "dist/*"
-  ],
   "files": [
     "dist/*"
   ],
@@ -46,14 +43,12 @@
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
   },
-  
   "devDependencies": {
     "@babel/core": "^7.23.9",
     "@babel/preset-env": "^7.23.9",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-node-resolve": "^15.2.3"
   },
-  
   "author": "songren",
   "license": "ISC",
   "keywords": [
@@ -61,7 +56,10 @@
     "typescript",
     "pine-utils"
   ],
-  "repository": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/byzhyt/pine-utils.git"
+  },
   "lint-staged": {
     "*.{js,ts,tsx,vue,md}": [
       "eslint --cache --fix"
