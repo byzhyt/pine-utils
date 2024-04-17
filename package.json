@@ -1,0 +1,70 @@
+{
+  "name": "pine-utils",
+  "version": "0.0.43",
+  "description": "pine 公共方法",
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.es.js",
+  "preview": false,
+  "type": "module",
+  "workspaces": [
+    "dist/*"
+  ],
+  "files": [
+    "dist/*"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "dev": "rimraf dist && rollup -c -w",
+    "build": "rimraf dist && rollup -c",
+    "docs": "typedoc --json typedoc.json"
+  },
+  "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.23.9",
+    "@babel/preset-react": "^7.23.3",
+    "@babel/preset-typescript": "^7.23.3",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "axios": "^1.6.8",
+    "rimraf": "^5.0.5",
+    "rollup": "^4.10.0",
+    "simple-git": "^3.22.0",
+    "simple-git-hooks": "^2.10.0",
+    "tslib": "^2.6.2",
+    "typedoc": "^0.25.12",
+    "typedoc-plugin-markdown": "^3.17.1",
+    "typescript": "^5.3.3"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  
+  "devDependencies": {
+    "@babel/core": "^7.23.9",
+    "@babel/preset-env": "^7.23.9",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-node-resolve": "^15.2.3"
+  },
+  
+  "author": "songren",
+  "license": "ISC",
+  "keywords": [
+    "rollup",
+    "typescript",
+    "pine-utils"
+  ],
+  "repository": {},
+  "lint-staged": {
+    "*.{js,ts,tsx,vue,md}": [
+      "eslint --cache --fix"
+    ]
+  }
+}

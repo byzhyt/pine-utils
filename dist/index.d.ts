@@ -1,0 +1,22 @@
+export * from "./utils";
+export * from "./entity";
+export declare const themeJson: {
+    "--color-line": string;
+    "--color-h1": string;
+    "--color-h2": string;
+    "--color-h3": string;
+    "--el-bg-color": string;
+    "--el-color-info": string;
+    "--el-color-error": string;
+    "--el-color-danger": string;
+    "--el-color-warning": string;
+    "--el-color-success": string;
+    "--el-color-primary": string;
+    "--el-color-white": string;
+    "--el-color-black": string;
+    "--el-border-color": string;
+    "--el-disabled-text-color": string;
+    "--el-disabled-bg-color": string;
+    "--el-text-color-placeholder": string;
+    "--el-text-color-disabled": string;
+};
