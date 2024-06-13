@@ -221,16 +221,20 @@ export interface SublevelEntity {
     @params meta.iconClassName             单元类型
     @params meta.disabled              路由禁用
     @params meta.visible               路由是否显示
+    
+    @params meta.visible               路由是否显示
+    @params meta.isToken               路由是否显示
  */
 
 export interface RouteEntity {
   name?: string;
   path?: string;
-  component?: Function;
-  redirect?: string;
-  children?: Array<RouteEntity>;
+  component?: Function | null | undefined;
+  redirect?: string | null | undefined;
+  children?: Array<RouteEntity> | null | undefined;
   meta?: {
     isMenuShow?: boolean;
+    isToken?: boolean;
     title?: string;
     icon?: string;
     className?: string;
@@ -238,3 +242,27 @@ export interface RouteEntity {
     visible?: boolean;
   };
 }
+
+
+// 请求源设置
+
+
+/**
+ * @param {TYPE}  type 请求类型
+ * @param {TYPE} request - 请求插件
+ * @param {TYPE} messageBox - 弹窗提示
+ * @param {TYPE} router -路由跳转
+ * @param {TYPE} config.mesgae - code
+ * @param {TYPE} config.mesgae - 提示信息
+ * 
+ */
+export interface RequestParams {
+  request: void
+  router?: void;
+  messageBox?: void;
+  config?: {
+    code?: string | 1;
+    mesgae?: string;
+  };
+}
+

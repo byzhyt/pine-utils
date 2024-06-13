@@ -95,15 +95,34 @@ export interface SublevelEntity {
 export interface RouteEntity {
     name?: string;
     path?: string;
-    component?: Function;
-    redirect?: string;
-    children?: Array<RouteEntity>;
+    component?: Function | null | undefined;
+    redirect?: string | null | undefined;
+    children?: Array<RouteEntity> | null | undefined;
     meta?: {
         isMenuShow?: boolean;
+        isToken?: boolean;
         title?: string;
         icon?: string;
         className?: string;
         disabled?: boolean;
         visible?: boolean;
+    };
+}
+/**
+ * @param {TYPE}  type 请求类型
+ * @param {TYPE} request - 请求插件
+ * @param {TYPE} messageBox - 弹窗提示
+ * @param {TYPE} router -路由跳转
+ * @param {TYPE} config.mesgae - code
+ * @param {TYPE} config.mesgae - 提示信息
+ *
+ */
+export interface RequestParams {
+    request: void;
+    router?: void;
+    messageBox?: void;
+    config?: {
+        code?: string | 1;
+        mesgae?: string;
     };
 }

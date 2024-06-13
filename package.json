@@ -1,6 +1,6 @@
 {
   "name": "pine-utils",
-  "version": "0.0.44",
+  "version": "0.0.61",
   "description": "pine 公共方法",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
@@ -38,7 +38,8 @@
     "tslib": "^2.6.2",
     "typedoc": "^0.25.12",
     "typedoc-plugin-markdown": "^3.17.1",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "uni": "^0.0.6"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"

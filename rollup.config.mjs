@@ -13,23 +13,23 @@ export default {
     {
       file: "./dist/index.umd.js",
       name: "index",
-      format: "umd",
+      format: "umd"
     },
     {
       file: "./dist/index.es.js",
       name: "index",
-      format: "es",
-    },
+      format: "es"
+    }
   ],
   cache: false,
   watch: {
     exclude: "node_modules/**",
-    include: "src/**",
+    include: "src/**"
   },
-  external: ["axios"],
+  external: ["axios", "uni"],
   plugins: [
     rollupTypescript({
-      tsconfig: "./tsconfig.json",
+      tsconfig: "./tsconfig.json"
     }),
     rollupPluginTerser(),
     rollupPluginBabel({
@@ -42,24 +42,24 @@ export default {
         [
           "@babel/preset-env",
           {
-            targets: "defaults",
-          },
+            targets: "defaults"
+          }
         ],
         "@babel/preset-typescript",
-        "@babel/preset-react",
-      ],
+        "@babel/preset-react"
+      ]
     }),
     nodeResolve({
       modulesOnly: true,
       moduleDirectories: ["node_modules"],
-      extensions: ["js", "ts"],
+      extensions: ["js", "ts"]
     }),
     rollupPluginCommonjs({
       extensions: [".js", ".ts"],
       include: ["src/**/*.ts"],
       exclude: "node_modules/*",
       transformMixedEsModules: true,
-      strictRequires: true,
-    }),
-  ],
+      strictRequires: true
+    })
+  ]
 };

@@ -2,13 +2,15 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "lib": ["ESNext", "DOM"],
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
     "module": "ESNext",
     "target": "ESNext",
     "moduleResolution": "Bundler",
     "noEmitOnError": false,
     "noEmit": false,
-    "noUnusedParameters": true,
     "pretty": true,
     "declaration": true,
     "outDir": "dist",
@@ -28,6 +30,19 @@
     "removeComments": false,
     "jsx": "preserve"
   },
-  "include": ["./src/**/*.d.ts", "./src/**/*.ts"],
-  "exclude": ["dist", "node_modules"]
+  "typedocOptions": {
+    "$schema": "https://typedoc.org/schema.json",
+    "entryPoints": [
+      "src/index.ts"
+    ],
+    "out": "docs"
+  },
+  "include": [
+    "./src/**/*.d.ts",
+    "./src/**/*.ts"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
 }
