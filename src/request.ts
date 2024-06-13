@@ -1,5 +1,5 @@
 
-import { jsonToGetData, RequestEntity, RequestParams, isObject, findObjectValue } from "./utils";
+import { jsonToGetData, RequestEntity, RequestParams, isObject, findObjectValue, statusError } from "./utils";
 
 export const contentType = "application/x-www-form-urlencoded";
 
@@ -58,13 +58,15 @@ export const uniParamsConfig = (options: any): object => {
   };
 };
 
-
 /**
- *    
+ * @author      songren
+ * @description 请求响应配置
  */
+
 export class httpRequestConfig {
-  configRequest: {}
-  selfconfig: {};
+  configRequest: any;
+  WebHttpRequest: any;
+  selfconfig: any;
   constructor() { }
   configRequestFunction = (config: any) => {
     const configJson = { ...config }
@@ -101,7 +103,7 @@ export class httpRequestConfig {
       data: config?.request ? findObjectValue(data, config.request) : data
     };
 
-    const statusCode = [this.selfconfig.config.code, "200"].includes(
+    const statusCode: any = [this.selfconfig.config.code, "200"].includes(
       String(result.code)
     );
     // 数据响应提示
@@ -132,9 +134,10 @@ export class httpRequestConfig {
   }
 }
 
-
+/**
+ * description  请求
+ */
 export class axiosHttpRequest extends httpRequestConfig {
-  WebHttpRequest: any;
   constructor(options: RequestParams | any) {
     super()
     this.configRequest = null
