@@ -1,6 +1,6 @@
 
-import { jsonToGetData, RequestEntity, RequestParams, isObject, findObjectValue, statusError } from "./utils";
-
+import { RequestEntity, RequestParams, } from './entity';
+import { jsonToGetData, isObject, findObjectValue, statusError } from "./utils";
 export const contentType = "application/x-www-form-urlencoded";
 
 // axios请求参数组合
@@ -114,11 +114,13 @@ export class httpRequestConfig {
         message: config?.message ?? statusError(statusCode)
       });
     }
+    console.log(555)
     return statusCode ? Promise.resolve(result) : Promise.reject(result);
   };
 
   // 请求失败处理函数
   httpErrorFunction = (error: any) => {
+    console.log(error, 7777777)
     const { config, code, message }: any = error ? JSON.parse(JSON.stringify(error)) : {};
     // 重新请求
     if (config && config.once && this.configRequest) {
