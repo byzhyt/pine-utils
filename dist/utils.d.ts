@@ -18,6 +18,6 @@ export declare const randomText: (len?: number) => string;
 export declare const getParams: (item: any, datas: any) => any;
 export declare const setFilePath: (path: string) => string;
 export declare const beforeAxiosEnter: (item: any, datas: any) => any;
-export declare const validation: object;
+export declare const validation: any;
 export declare const getPlatform: () => "app" | "pc";
 export declare const statusError: (code: string) => any;

@@ -129,9 +129,8 @@ export const getParams = (item: any, datas: any) => {
   }
   return tempjson;
 };
-
 export const setFilePath = (path: string) => {
-  return new URL("../../image/" + path, import.meta.url).href;
+  return new URL('../../image' + path, import.meta.url).href;
 };
 
 // 请求数据处理
@@ -182,7 +181,7 @@ export const beforeAxiosEnter = (item: any, datas: any) => {
   }
 
   // 怪异请求如get参数post请求
-  if (!(datas instanceof FormData) && item.queer && tempjson.type == "post") {
+  if (item.queer && tempjson.type == "post") {
     tempjson.url = `${tempjson.url}?${jsonToGetData(tempjson.data)}`;
     delete tempjson.data;
   }
@@ -192,7 +191,7 @@ export const beforeAxiosEnter = (item: any, datas: any) => {
 
 
 // 默认校验 pattern
-export const validation: object = {
+export const validation: any = {
   // 域名验证
   http: /^(http|https):\/\//,
   // 营业执照

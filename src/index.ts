@@ -1,8 +1,6 @@
 export * from "./utils";
-export * from "./entity";
-
+export type * from "./entity";
 export * from "./request";
-
 export const themeJson = {
   "--color-line": "#f7f8fa",
   "--color-h1": "#333333",

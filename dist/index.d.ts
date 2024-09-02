@@ -1,5 +1,5 @@
 export * from "./utils";
-export * from "./entity";
+export type * from "./entity";
 export * from "./request";
 export declare const themeJson: {
     "--color-line": string;
