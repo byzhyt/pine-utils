@@ -416,6 +416,7 @@ export const setFilePath = (path: string) => {
  * `
  *
  */
+
 export const beforeAxiosEnter = (item: any, datas: any = {}) => {
     const load = {...item.load};
     const rreq: any = item.rreq;
@@ -434,7 +435,7 @@ export const beforeAxiosEnter = (item: any, datas: any = {}) => {
         data: {},
     };
     // item.params为*表示tempjson。data需要赋值传入datas
-    if (item.params == '*') {
+    if (!item?.params) {
         tempjson.data = datas;
     }
     // 获取params数组内固定的参数值
