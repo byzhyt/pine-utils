@@ -1,0 +1,22 @@
+{
+  // "$schema": "https://typedoc-plugin-markdown.org/schema.json",
+  "entryPoints": [
+    "./src/request.ts",
+    "./src/utils.ts"
+  ],
+  "theme": "default",
+  // "hidePageHeader": false,
+  // "hideGenerator": false,
+  // "hidePageTitle": false,
+  // "hideInPageTOC": false,
+  // "sidebar": false,
+  "exclude": [
+    "**/*.test.ts",
+    "**/node_modules/**"
+  ],
+  "tsconfig": "./tsconfig.json",
+  "plugin": [
+    "typedoc-plugin-markdown"
+  ],
+  "readme": "README.md"
+}

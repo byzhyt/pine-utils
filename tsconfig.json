@@ -1,48 +1,25 @@
 {
+  "extends": "./tsconfig.config.json",
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "lib": [
-      "ESNext",
-      "DOM"
-    ],
-    "module": "ESNext",
-    "target": "ESNext",
-    "moduleResolution": "Bundler",
-    "noEmitOnError": false,
-    "noEmit": false,
-    "pretty": true,
-    "declaration": true,
-    "outDir": "dist",
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "useDefineForClassFields": false,
-    "allowJs": false,
-    "noUnusedLocals": true,
-    "strictNullChecks": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "noImplicitReturns": false,
-    "isolatedModules": true,
-    "experimentalDecorators": true,
-    "esModuleInterop": true,
-    "removeComments": false,
-    "jsx": "preserve"
-  },
-  "typedocOptions": {
-    "$schema": "https://typedoc.org/schema.json",
-    "entryPoints": [
-      "src/index.ts"
-    ],
-    "out": "docs"
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "./src/"
+      ],
+      "@test/*": [
+        "./test/"
+      ]
+    }
   },
   "include": [
     "./src/**/*.d.ts",
-    "./src/**/*.ts"
+    "./src/**/*.ts",
+    "jest.config.mjs",
+    "rollup.config.mjs"
   ],
   "exclude": [
     "dist",
-    "node_modules"
+    "node_modules",
+    "tests"
   ]
 }
