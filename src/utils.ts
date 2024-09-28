@@ -1,4 +1,4 @@
-import {ItemEntity, ParamsEntity, FormItemEntity, RequestEntity, InputEntity, LabelEntity} from './entity'
+import {ItemEntity, ParamsEntity, FormItemEntity, RequestEntity, LabelEntity} from './entity'
 
 
 /**
@@ -10,7 +10,7 @@ import {ItemEntity, ParamsEntity, FormItemEntity, RequestEntity, InputEntity, La
  * dataEmpty({dataType:'a'})
  * `
  */
-export const dataEmpty = (item: ItemEntity) => {
+export const dataEmpty = (item: FormItemEntity) => {
     const emptyJson: any = {
         b: false,
         s: "",
@@ -32,7 +32,7 @@ export const dataEmpty = (item: ItemEntity) => {
  * @description
  * @param item
  */
-export const getName = (item: ItemEntity) => {
+export const getName = (item: FormItemEntity) => {
     return item?.request ?? item?.name;
 };
 

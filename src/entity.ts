@@ -485,10 +485,12 @@ export type CheckboxType = RadioType & {
  * @param {LabelEntity}   control                     - 控制字段
  * @param {LabelEntity}   cascader                    -  关联元素
  * @param {String}   bodyClassName                     - 单元clasName 类
+ * @param {String}  name                               - 字段
  *
  */
 
 export interface FormItemEntity extends ItemEntity {
+    name?: string,
     asterisk?: string,
     eltype: 'input' | 'upload' | 'content' | 'button' | 'picker' | 'switch' | 'radio' | 'code' | 'editor' | 'tcp',
     slotName?: string,
@@ -599,7 +601,6 @@ export type FormItemType = {
  *
  */
 export interface InputEntity extends FormItemEntity {
-    name?: string;
     type?: 'password' | 'text'
     minlength: number
     maxlength: number
