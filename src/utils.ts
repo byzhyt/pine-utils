@@ -473,6 +473,55 @@ export const beforeAxiosEnter = (item: any, datas: any = {}) => {
 
 
 // 默认校验 pattern
+
+/**
+ * @param   {String}     http            -  域名验证
+ * @param   {String}     license         -  营业执照
+ * @param   {String}     name            -  用户名
+ * @param   {String}     code            -  编码
+ * @param   {String}     zh              -  中文
+ * @param   {String}     telephone       -  手机号/电话
+ * @param   {String}     en              -  英文
+ * @param   {String}     enCode          -  英文字典名
+ * @param   {String}     email           -  邮箱
+ * @param   {String}     phone           -  手机号
+ * @param   {String}     tel             -  座机号码
+ * @param   {String}     int             -  整数
+ * @param   {String}     float           -  浮点数
+ * @param   {String}     bank            -  银行卡
+ * @param   {String}     date            -  日期
+ * @param   {String}     content         -  文本信息
+ * @example
+ * `
+ * const data={
+ *     phone:'4544545'
+ * }
+ * const iten={
+ *         name: 'mobile',
+ *         visible: true,
+ *         eltype: 'input',
+ *         maxlength: 11,
+ *         minlength: 11,
+ *         asterisk: true,
+ *         required: true,
+ *         label: '手机号：',
+ *         pattern:validation['phone'],
+ *         type: 'number',
+ *         placeholder: '请输入收货人手机号',
+ *         bodyClassName: ' border-bottom p-25rpx text-24rpx'
+ * }
+ * new RegExp(validation[iten.pattern])
+ * `
+ *
+ * @export
+ *
+ * `
+ *      retrun  false
+ * `
+ *
+ *
+ */
+
 export const validation: any = {
     // 域名验证
     http: /^(http|https):\/\//,
@@ -484,6 +533,7 @@ export const validation: any = {
     code: /(^[a-z,A-Z,0-9]{1,50}$)/,
     // 中文
     zh: /^[\u4e00-\u9fa5]{1,20}$/,
+    // 手机号/电话
     telephone: /((^0[1-9]{2,3}\d{7,8}$)|(^[1-9]\d{6,7}$))/,
     // 英文
     en: /^[a-z,A-Z]{1,50}$/,
@@ -496,7 +546,7 @@ export const validation: any = {
     // 座机号码
     tel: /(^0[1-9]{2,3}\d{7,8}$)|(^[1-9]\d{6,7}$)/,
     // 整数
-    inter: /(^[1-9]+$)|(^[1-9]\d+$)/,
+    int: /(^[1-9]+$)|(^[1-9]\d+$)/,
     // 浮点数
     float: /(^0\.\d{1,2}$)|(^[1-9]\d+\.\d{1,2}$)/,
     // 身份证
