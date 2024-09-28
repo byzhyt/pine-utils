@@ -77,10 +77,10 @@ export interface RequestEntity {
 export interface LabelEntity {
     label: string;
     value: string;
-    storage: string;
+    storage?: string;
     visible: boolean,
-    path: string,
-    static: boolean;
+    path?: string,
+    static?: boolean;
 }
 
 /**
@@ -95,7 +95,7 @@ export interface LabelEntity {
  *
  */
 
-export type labelType = {
+export type LabelType = {
     label: {
         type: String,
         required: false,
@@ -204,6 +204,7 @@ export type ImageType = {
  *  @name
  *  @description        获取指定参数
  *  @param   {Boolean}    multiple    数组传值
+ *  @param  {Array<LabelEntity>} params  参数数组
  *  @example
  *  `
  *  const data={
@@ -240,53 +241,65 @@ export type ImageType = {
 
 export interface ParamsEntity extends LabelEntity {
     multiple: boolean;
+    params: Array<LabelEntity>
 }
 
 
 /**
- *    @name  FormsEntity                 - 表单组件参数
- *    @description                       - 表单组件
- *    @param   {String}   inline         - 表单展示方式span赋值后无效;
- *    @param   {String}   rules          - 表单验证
- *    @param   {String}   loads          - 加载前表单请求;
- *    @param   {String}   data           - 表单静态数据或动态数据;
- *    @param   {String}   items          - 表单单元数据;
- *    @param   {String}   className      - 表单className;
- *    @param   {String}   disabled:      - 表单是否可操作;
- *    @param   {String}   boadyClassName
- *    @param   {String}   labelPosition  - 单元描述显示方向;
- *    @param   {String}   statusIcon     - 表单验证状态;
- *    @param   {String}   labelWidth     - 描述宽度;
- *    @param   {String}   showMessage    - 验证错误信息是否显示;
- *    @param   {String}   inlineMessage  - 验证信息显示方式;
- *    @param   {String}   span           - 表单显示多列;
- *    @param   {String}   gutter         - 每列间距;
+ *    @name  FormsEntity                            - 表单组件参数
+ *    @description                                  - 表单组件
+ *    @param   {String}   inline                    - 表单展示方式span赋值后无效;
+ *    @param   {String}   rules                     - 表单验证
+ *    @param   {String}   loads                     - 加载前表单请求;
+ *    @param   {String}   data                      - 表单静态数据或动态数据;
+ *    @param   {String}   items                     - 表单单元数据;
+ *    @param   {String}   className                 - 表单className;
+ *    @param   {String}   disabled:                 - 表单是否可操作;
+ *    @param   {String}   bodyClassName            - 表单单元className 类;
+ *    @param   {String}   labelPosition             - 单元描述显示方向;
+ *    @param   {String}   statusIcon                - 表单验证状态;
+ *    @param   {String}   labelWidth                - 描述宽度;
+ *    @param   {String}   showMessage               - 验证错误信息是否显示;
+ *    @param   {String}   inlineMessage             - 验证信息显示方式;
+ *    @param   {String}   span                      - 表单显示多列;
+ *    @param   {String}   gutter                    - 每列间距;
+ *    @param   {FormItemEntity}   prepend           - 像表单前插入节点;
+ *    @param   {FormItemEntity}   append            - 像表单后插入节点;
  *
  */
 
 export interface FormsEntity {
-    inline: boolean;
-    rules: object;
-    load: Array<loadEntity>;
-    data: object;
-    items: Array<any>;
-    className: string;
-    disabled: boolean;
-    labelStyle: string;
-    labelClassName: string;
-    span: number;
-    gutter: number;
+    inline?: boolean;
+    rules?: object;
+    load?: Array<RequestEntity>;
+    data?: object;
+    items?: Array<any>;
+    className?: string;
+    disabled?: boolean;
+    labelStyle?: string;
+    labelClassName?: string;
+    span?: number;
+    gutter?: number;
+    append: FormItemEntity;
+    prepend: FormItemEntity;
 }
 
 
 /**
- *
+ * @name  ItemEntity
  * @param {String}  name                     - 选中绑定值； 单选有效
  * @param {String}  activeClassName          - 选中className类
  * @param {String}  className                - className 类
  * @param {Boolean} imageClassName           - 图片className
  * @param {String}  icon                     - 图标
  * @param {Boolean} disabled                 - 是否禁用
+ * @param {String} dataType                  - 数据类型
+ * @param {LabelEntity}    rreq              - 请求地址动态值设置
+ * @param {LabelEntity}    nonstop           - 特殊请求包体如data非对象
+ * @param {Boolean}        queer             - 怪异请求如get参数post请求
+ * @param {RequestEntity } load              - 请求
+ * @param {Array<LabelEntity>} params        - 参数数组
+ * @param {String}    request                -动态参数
  *
  */
 export interface ItemEntity extends LabelEntity {
@@ -294,14 +307,20 @@ export interface ItemEntity extends LabelEntity {
     imageClassName?: String;
     activeClassName?: String;
     icon?: string;
-    disabled?: boolean
-
+    disabled?: boolean;
+    dataType?: string;
+    rreq?: LabelEntity;
+    nonstop?: LabelEntity;
+    request: string;
+    queer?: boolean;
+    load: RequestEntity;
+    params: Array<LabelEntity>;
 }
 
 /**
- * @name  labelType                          -  列表单元
+ * @name  ItemType                          -  列表单元
  * @param {String}  activeClassName          - 选中className类
- * @param {String}  className                - className 类
+ * @param {String}  classnames                - className 类
  * @param {Boolean} imageClassName           - 图片className
  * @param {String}  icon                     - 图标
  * @param {Boolean} disabled                 - 是否禁用
@@ -319,7 +338,7 @@ export  type ItemType = LabelType & {
         required: false,
         default: false
     },
-    className: {
+    classnames: {
         type: String,
         required: false,
         default: ''
@@ -338,31 +357,12 @@ export  type ItemType = LabelType & {
 
 
 /**
- * @name UploadEntity
- */
-export interface UploadEntity extends RadioEntity {
-    placeholder: string;
-    name: '';
-}
-
-
-/**
+ * @name  RadioEntity
  * {@link <identifier>}
- * @desc 单选组件
- * @param {Object} item - 参数超过三个以上建议使用
- * @param {String} className - className 类
- * @param {String,Boolean,Number,Object} value - 值，多选时有效
- * @param {String} label - 文案
- * @param {Boolean} disabled - 是否禁用
- * @param {String,Boolean,Number,Object} trueValue - 选中绑定值； 单选有效
- * @param {String,Boolean,Number} falseValue - 未选中绑定值；单选有效
- * @param {String} color - 选中颜色设置
+ * @description 单选组件
  * @param {String} activeClassName - 选中className类
- * @param {String} label - 文案
- * @param {Boolean} disabled - 是否禁用
  * @param {String}  classnames - className 类
  * @param {String}  color - 选中颜色设置
- * @param {String,Boolean,Number,Object} value - 值，多选时有效
  * @param {String,Boolean,Number,Object} trueValue - 选中绑定值； 单选有效
  * @param {String,Boolean,Number} falseValue - 未选中绑定值；单选有效
  * @param {Boolean} checked - 是否选中
@@ -378,11 +378,7 @@ export interface UploadEntity extends RadioEntity {
  *
  *
  */
-export interface RadioEntity extends ItemEntity {
-    className?: string,
-    value?: String | Boolean | Number,
-    label?: '',
-    disabled: Boolean,
+export interface RadioEntity extends LabelEntity {
     trueValue?: String | Boolean | Number,
     falseValue?: String | Boolean | Number,
     checked?: Boolean,
@@ -393,24 +389,12 @@ export interface RadioEntity extends ItemEntity {
 /**
  * {@link <identifier>}
  * @desc 单选组件
- * @author  songen
- * @param {Object} item - 参数超过三个以上建议使用
- * @param {String} className - className 类
- * @param {String,Boolean,Number,Object} value - 值，多选时有效
- * @param {String} label - 文案
- * @param {Boolean} disabled - 是否禁用
- * @param {String,Boolean,Number,Object} trueValue - 选中绑定值； 单选有效
- * @param {String,Boolean,Number} falseValue - 未选中绑定值；单选有效
- * @param {String} color - 选中颜色设置
- * @param {String} activeClassName - 选中className类
- * @param {String} label - 文案
- * @param {Boolean} disabled - 是否禁用
- * @param {String}  classnames - className 类
- * @param {String}  color - 选中颜色设置
- * @param {String,Boolean,Number,Object} value - 值，多选时有效
- * @param {String,Boolean,Number,Object} trueValue - 选中绑定值； 单选有效
- * @param {String,Boolean,Number} falseValue - 未选中绑定值；单选有效
- * @param {Boolean} checked - 是否选中
+ * @param {ItemEntity} item                              - 参数超过三个以上建议使用
+ * @param {String,Boolean,Number} trueValue       - 选中绑定值； 单选有效
+ * @param {String,Boolean,Number} falseValue             - 未选中绑定值；单选有效
+ * @param {String} color                                 - 选中颜色设置
+ * @param {String} activeClassName                       - 选中className类
+ * @param {Boolean} checked                              - 是否选中
  *
  * @example
  *
@@ -423,121 +407,121 @@ export interface RadioEntity extends ItemEntity {
  *
  *
  */
-export type RadioType = {
+export type RadioType = LabelType & {
     item: {
         type: RadioEntity,
         required: false,
         default: {}
     },
+    activeClassName: {
+        type: String,
+        required: false,
+        default: ''
+    },
+    color: {
+        type: String,
+        required: false,
+        default: ''
+    },
+    falseValue: {
+        type: [String, Boolean, Number],
+        required: false,
+        default: false
+    },
+    trueValue: {
+        type: [String, Boolean, Number],
+        required: false,
+        default: true
+    },
     checked: {
-        type: [Boolean, String, Number],
-        required: true,
-        default: false
-    },
-    disabled: {
         type: Boolean,
-        required: true,
+        required: false,
         default: false
-    },
-    label: {
-        type: String,
-        required: true,
-        default: ''
-    },
-    classnames: {
-        type: String,
-        required: true,
-        default: ''
     }
 }
 
 
+/**
+ * @name CheckboxEntity
+ * @param {'checkbox', 'button'} type      - 类型
+ *
+ */
 export interface CheckboxEntity extends RadioEntity {
-
+    type?: 'checkbox' | 'button'
 }
 
-
+/**
+ * @name CheckboxType
+ * @description 复选框
+ * @param {'checked'| 'button'} type      - 类型
+ *
+ */
 export type CheckboxType = RadioType & {
-    type: CheckboxEntity
+    item: {
+        type: CheckboxEntity,
+        required: false,
+        default: {}
+    },
+    type: {
+        type: ['checkbox', 'button'],
+        required: false,
+        default: 'checkbox'
+    }
 }
 
 
 /**
  *
- * @description 表单单元
- * @author songren
- * @param {Boolena} inline - 是否水平
- * @param {Object} item - 单元数据
- * @param {String} name - 绑定数据字段
- * @param {String} label - 文案
- * @param {String} labelClassName - 文案className类
- * @param {String} labelStyle - 文案行内样式
- * @param {String} itemClassName - 单元内容className
- * @param {String} slotName - 插槽名称
- * @param {String} eltype - 单元类型['input',upload,content,button,picker,switch,radio,code],
- * @param {Boolena} asterisk - 是否显示必选
- * @param {String} imgClassName - description
- * @param {String} placeholder - description
- * @param {String} placeholderClassName - description
- * @param {Boolena} disabled - 是否禁用
- * @param {Array} props - 下拉数据回显
- * @param {Object} load - 请求接口
- * @param {Array} params - 参数数组
- * @param {Object} rreq - 动态获取值
- * @param {Boolena} visible - 单元是否显示
- * @param {Array} control - 控制字段
+ * @name  FormItemEntity
+ * @description  表单单元
+ * @param {String}  labelClassName                    -文案className类
+ * @param {String}  labelStyle                        - 文案行内样式
+ * @param {String}  itemClassName                     - 单元内容className
+ * @param {String}  slotName                          - 插槽名称
+ * @param {'input','upload','content','button','picker','switch','radio','code','editor' , 'tcp'} eltype - 单元类型
+ * @param {Boolean} asterisk                          - 是否显示必选
+ * @param {String}  placeholder                       - description
+ * @param {String}  placeholderClassName              - description
+ * @param {LabelEntity}   control                     - 控制字段
+ * @param {LabelEntity}   cascader                    -  关联元素
+ * @param {String}   bodyClassName                     - 单元clasName 类
  *
  */
 
-
-export interface FormItemEntity {
-    name: string;
-    type?: string;
-    eltype: string;
-    label?: string;
-    disabled?: boolean;
+export interface FormItemEntity extends ItemEntity {
+    asterisk?: string,
+    eltype: 'input' | 'upload' | 'content' | 'button' | 'picker' | 'switch' | 'radio' | 'code' | 'editor' | 'tcp',
+    slotName?: string,
     placeholder?: string;
+    bodyClassName?: string,
     placeholderClassName?: string;
-    params?: Array<ParamsEntity>;
-    path?: string;
-    props?: LabelEntity;
-    className?: string;
-    list?: Array<any>;
     labelStyle?: string;
     labelClassName?: string;
     itemClassName?: string;
     itemStyle?: string;
     imgClassName?: string;
-    visible: boolean;
-    multiple?: boolean;
-    request?: string;
-    rreq?: Array<LabelEntity>;
     control?: Array<LabelEntity>;
+    cascader?: Array<LabelEntity>
 }
 
 
-/**@deprecated 表单类型
- * @param {Boolena} inline - 是否水平
- * @param {Object} item - 单元数据
- * @param {String} name - 绑定数据字段
- * @param {String} label - 文案
- * @param {String} bodyClassName - 单元className
- * @param {String} labelClassName - 文案className类
- * @param {String} labelStyle - 文案行内样式
- * @param {String} itemClassName - 单元内容className
- * @param {String} slotName - 插槽名称
- * @param {String} eltype - 单元类型['input',upload,content,button,picker,switch,radio,code],
- * @param {Boolena} asterisk - 是否显示必选
- * @param {String} imgClassName - description
- * @param {String} placeholder - description
- * @param {String} placeholderClassName - description
- * @param {Boolena} disabled - 是否禁用
- * @param {Array} props - 下拉数据回显
- * @param {Object} load - 请求接口
- * @param {Array} params - 参数数组
- * @param {Object} rreq - 动态获取值
- * @param {Boolena} visible - 单元是否显示
- * @param {Array} control - 控制字段
+/**
+ * @name  FormItemType
+ * @deprecated                                                表单类型
+ * @param {Boolean} inline                                    - 是否水平
+ * @param {FormItemEntity}  item                               - 单元数据
+ * @param {String} label                                      - 文案
+ * @param {String} bodyClassName                              - 单元className
+ * @param {String} labelClassName                             - 文案className类
+ * @param {String} labelStyle                                 - 文案行内样式
+ * @param {String} itemClassName                              - 单元内容className
+ * @param {String} eltype                                     - 单元类型['input',upload,content,button,picker,switch,radio,code,editor , tcp],
+ * @param {Boolean} asterisk                                  - 是否显示必选
+ * @param {String} placeholder                                - description
+ * @param {String} placeholderClassName                       - description
+ * @param {Boolean} disabled                                  - 是否禁用
+ * @param {Boolean} visible                                   - 单元是否显示
+ * @param {Array} control                                     - 控制字段
  *
  */
 export type FormItemType = {
@@ -548,12 +532,7 @@ export type FormItemType = {
     },
     bodyClassName: {
         type: String,
-        default: true,
-        required: false
-    },
-    inline: {
-        type: Boolean,
-        default: true,
+        default: '',
         required: false
     },
     asterisk: {
@@ -562,28 +541,23 @@ export type FormItemType = {
         required: false
     },
     eltype: {
-        type: [String],
-        default: true,
-        required: false
-    },
-    slotName: {
-        type: Boolean,
-        default: true,
+        type: ['input', 'upload', 'content', 'button', 'picker', 'switch', 'radio', 'code', 'tcp', 'editor'],
+        default: '',
         required: false
     },
     itemClassName: {
         type: String,
-        default: true,
+        default: '',
         required: false
     },
     labelClassName: {
         type: String,
-        default: true,
+        default: '',
         required: false
     },
     label: {
         type: String,
-        default: true,
+        default: '',
         required: false
     },
     change: {
@@ -603,15 +577,177 @@ export type FormItemType = {
     },
     placeholder: {
         type: String,
-        default: true,
+        default: '',
         required: false
     },
     placeholderClassName: {
         type: String,
-        default: true,
+        default: '',
         required: false
     }
 }
+
+
+/**
+ * @name  InputEntity
+ * @param {String} name                          - 参数字段
+ * @param {'password' | 'text'} type             - 类型
+ * @param {RequestEntity} load                   - 请求
+ * @param {String} params                        - 参数名称
+ * @param {Number} minlength                     - 最小值
+ * @param {Number} maxlength                     - 最大值
+ *
+ */
+export interface InputEntity extends FormItemEntity {
+    name?: string;
+    type?: 'password' | 'text'
+    minlength: number
+    maxlength: number
+}
+
+/**
+ * @name  InputType
+ * @param {String} name                          - 参数字段
+ * @param {'password' | 'text'} type             - 类型
+ * @param {RequestEntity} load                   - 请求
+ * @param {String} params                        - 参数名称
+ * @param {Number} minlength                     - 最小值
+ * @param {Number} maxlength                     - 最大值
+ *
+ */
+
+export  type InputType = FormItemType & {
+    item: {
+        type: InputEntity,
+        default: {},
+        required: false
+    },
+    type: {
+        type: String,
+        default: '',
+        required: false
+    },
+    load: {
+        type: RequestEntity,
+        default: {},
+        required: false
+    },
+    name: {
+        type: String,
+        default: '',
+        required: false
+    },
+    maxlength: {
+        type: Number,
+        default: 10,
+        required: false
+    },
+    minlength: {
+        type: Number,
+        default: 0,
+        required: false
+    },
+    params: {
+        type: Array<LabelEntity>,
+        default: [],
+        required: false
+    }
+}
+
+
+/**
+ * @name  SelectEntity
+ * @param {RequestEntity} props                   - 动态参数
+ *
+ */
+
+export interface SelectEntity extends InputEntity {
+    props: LabelEntity,
+}
+
+
+/**
+ * @name  SelectType
+ * @param {RequestEntity} props                   - 动态参数
+ *
+ */
+
+export type SelectType = InputType & {
+    props: {
+        type: LabelEntity,
+        default: LabelEntity,
+        required: false
+    }
+}
+
+/**
+ * @name  SwitchEntity
+ * @param {RequestEntity} props                   - 动态参数
+ *
+ */
+
+export interface SwitchEntity extends RadioEntity {
+    props: LabelEntity,
+}
+
+
+/**
+ * @name  SwitchType
+ * @param {RequestEntity} props                   - 动态参数
+ *
+ */
+
+export type SwitchType = RadioType
+
+
+/**
+ * @name UploadEntity
+ * @param {String} name    - 参数名称
+ * @param {String} placeholder    - 参数名称
+ * @param {RequestEntity} load    - 参数名称
+ * @param {String} placeholderClassName    - 参数名称
+ * @param {String} className    - 参数名称
+ * @param {String} params    - 参数名称
+ *
+ */
+export interface UploadEntity extends InputEntity {
+}
+
+/**
+ * @name   UploadType
+ * @param {String} name    - 参数名称
+ * @param {String} placeholder    - 参数名称
+ * @param {RequestEntity} load    - 参数名称
+ * @param {String} placeholderClassName    - 参数名称
+ * @param {String} className    - 参数名称
+ * @param {String} params    - 参数名称
+ */
+
+
+export type UploadType = & InputType
+
+
+/**
+ * @name  PickerEntity
+ * @param {LabelEntity} children                   - 动态参数
+ *
+ * @param {Number} column                   - 动态参数
+ *
+ */
+
+export interface PickerEntity extends SelectEntity {
+    children: LabelEntity;
+    column: number
+}
+
+
+/**
+ * @name  PickerType
+ * @param {RequestEntity} props                   - 动态参数
+ *
+ */
+
+export type PickerType = & PickerEntity
 
 export type itemType = {
     eltype: string;

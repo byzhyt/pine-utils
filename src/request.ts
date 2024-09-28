@@ -1,5 +1,5 @@
 
-import { RequestEntity, RequestParams, } from './entity';
+import { RequestEntity } from './entity';
 import { jsonToGetData, isObject, findObjectValue, statusError } from "./utils";
 export const contentType = "application/x-www-form-urlencoded";
 
@@ -29,7 +29,7 @@ export const axiosParamsConfig = (options: any): object => {
     contentType: options?.contentType ?? contentType,
     once: options?.once
   };
-};   
+};
 
 // uni请求参数组合
 export const uniParamsConfig = (options: any): object => {
@@ -138,14 +138,14 @@ export class httpRequestConfig {
  * description  请求
  */
 export class axiosHttpRequest extends httpRequestConfig {
-  constructor(options: RequestParams | any) {
+  constructor(options: RequestEntity | any) {
     super()
     this.configRequest = null
     this.selfconfig = options
     this.init(options);
   }
   // 初始化
-  init(options: RequestParams) {
+  init(options: RequestEntity) {
     const axios: any = options.request;
     this.WebHttpRequest = axios.create();
     this.WebHttpRequest.interceptors.request.use(
@@ -166,14 +166,14 @@ export class axiosHttpRequest extends httpRequestConfig {
 
 export class uniHttpRequest extends httpRequestConfig {
   WebHttpRequest: any;
-  constructor(options: RequestParams | any) {
+  constructor(options: RequestEntity | any) {
     super()
     this.configRequest = null
     this.selfconfig = options
     this.init(options);
   }
   // 初始化
-  init(options: RequestParams) {
+  init(options: RequestEntity) {
     const axios: any = options.request;
     this.WebHttpRequest = { ...axios.request };
   }

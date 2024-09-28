@@ -1,4 +1,4 @@
-import type {itemType} from './entity'
+import {ItemEntity, ParamsEntity, FormItemEntity, RequestEntity, InputEntity, LabelEntity} from './entity'
 
 
 /**
@@ -10,7 +10,7 @@ import type {itemType} from './entity'
  * dataEmpty({dataType:'a'})
  * `
  */
-export const dataEmpty = (item: itemType) => {
+export const dataEmpty = (item: ItemEntity) => {
     const emptyJson: any = {
         b: false,
         s: "",
@@ -32,7 +32,7 @@ export const dataEmpty = (item: itemType) => {
  * @description
  * @param item
  */
-export const getName = (item: any) => {
+export const getName = (item: ItemEntity) => {
     return item?.request ?? item?.name;
 };
 
@@ -256,21 +256,22 @@ export const randomText = (len: number = 20) => {
  *
  *
  */
-export const getParams = (item: any, datas: any) => {
-    const tempjson: any = {};
-    // 获取设置参数值
-    if (Array.isArray(item.params)) {
-        item.params.map((pitem: any) => {
-            if (pitem.static) {
-                tempjson[pitem.label] = pitem.value;
-            } else {
-                isObject(datas) &&
-                (tempjson[pitem.label] = datas[pitem.value] ?? +pitem);
-            }
-        });
+export const getParams = (item: ParamsEntity, datas: any) => {
+        const tempjson: any = {};
+        // 获取设置参数值
+        if (Array.isArray(item.params)) {
+            item.params.map((pitem: any) => {
+                if (pitem.static) {
+                    tempjson[pitem.label] = pitem.value;
+                } else {
+                    isObject(datas) &&
+                    (tempjson[pitem.label] = datas[pitem.value] ?? +pitem);
+                }
+            });
+        }
+        return tempjson;
     }
-    return tempjson;
-};
+;
 
 
 /**
@@ -374,7 +375,7 @@ export const verifyOption = (list: any, data: any, name: string) => {
  *  true
  * `
  */
-export const verifyData = ({data, items}: { data: Object, items: Array<any>, validate?: object }) => {
+export const verifyData = ({data, items}: { data: Object, items: Array<ItemEntity>, validate?: object }) => {
 
         const keys: Array<string> = Object.keys(data);
         let index = 0
@@ -417,10 +418,10 @@ export const setFilePath = (path: string) => {
  *
  */
 
-export const beforeAxiosEnter = (item: any, datas: any = {}) => {
-    const load = {...item.load};
-    const rreq: any = item.rreq;
-    const nonstop = item.nonstop;
+export const beforeAxiosEnter = (item: FormItemEntity, datas: any = {}) => {
+    const load: RequestEntity = {...item.load};
+    const rreq: any = item?.rreq;
+    const nonstop: any = item?.nonstop;
     // 请求地址动态值设置
     if (isObject(rreq) && rreq.label && isObject(datas)) {
         const loop = load.url.match(/rreq$/g)
@@ -440,23 +441,19 @@ export const beforeAxiosEnter = (item: any, datas: any = {}) => {
     }
     // 获取params数组内固定的参数值
     else if (Array.isArray(item.params) && isObject(datas)) {
-        item.params.map((pitem: any) => {
+        item.params.map((pitem: LabelEntity) => {
             tempjson.data[pitem.label] = findObjectValue(datas, pitem.value)
         })
     }
     // 特殊请求包体如data非对象
     else if (nonstop && isObject(datas)) {
         const list = [];
-        if (typeof nonstop == "boolean") {
-            list.push(datas);
+        if (nonstop.static) {
+            list.push(nonstop.value);
         } else {
-            if (nonstop.static) {
-                list.push(nonstop.value);
-            } else {
-                list.push(datas[nonstop.label]);
-            }
+            list.push(datas[nonstop.label]);
         }
-        if (item.dataType == "a") {
+        if (item?.dataType == "a") {
             tempjson.data = list;
         } else {
             tempjson.data = list[0];
