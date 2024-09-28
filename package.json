@@ -1,6 +1,6 @@
 {
   "name": "pine-utils",
-  "version": "0.0.69",
+  "version": "0.0.70",
   "description": "pine 公共方法",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
@@ -64,6 +64,14 @@
     "typescript",
     "pine-utils"
   ],
+  "repository": {
+    "type": "git",
+    "url": "ghttps://github.com/byzhyt/pine-utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/byzhyt/pine-utils/issues"
+  },
+  "homepage": "https://github.com/byzhyt/pine-utils#readme",
   "lint-staged": {
     "*.{js,ts,tsx,vue,md}": [
       "eslint --cache --fix"
