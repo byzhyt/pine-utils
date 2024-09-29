@@ -57,6 +57,7 @@ export const isObject = (val: any) => {
 
 
 /**
+ *
  * @name findObjectValue
  * @description  获取json数据指定key的值
  * @param {Object} datas   数据源
@@ -97,6 +98,7 @@ export const findObjectValue = (datas: any, name: string) => {
 
 // 数组去重
 /**
+ *
  * @name arrayToOnly
  * @description 去重数组
  * @param {Array} list  数组
@@ -121,7 +123,10 @@ export const arrayToOnly = (
 //
 
 /**
+ *
+ * @name jsonToGetData
  * @description JSON转get数据
+ * @param {Object} data
  * @example
  *
  * `
@@ -223,7 +228,7 @@ export const randomText = (len: number = 20) => {
 };
 
 /**
- *
+ * @name getParams
  * @param {Object} item     参数数组单元
  * @param {Object} datas    数源
  * @example
@@ -275,6 +280,7 @@ export const getParams = (item: ParamsEntity, datas: any) => {
 
 
 /**
+ *
  * @name verifyOption
  * @description 表单校验
  * @param {Array} list
@@ -344,6 +350,8 @@ export const verifyOption = (list: any, data: any, name: string) => {
 }
 
 /**
+ *
+ * @name verifyData
  * @description 校验数据
  * @param  {Object}         data            - 数据源
  * @param  {Array<any>}     items           - 校验数组
@@ -402,7 +410,7 @@ export const setFilePath = (path: string) => {
 
 
 /**
- *
+ * @name beforeAxiosEnter
  * @param {Object} item
  * @param {Object} datas
  * @example
@@ -469,9 +477,10 @@ export const beforeAxiosEnter = (item: FormItemEntity, datas: any = {}) => {
 };
 
 
-// 默认校验 pattern
 
 /**
+ *
+ * @name validation
  * @param   {String}     http            -  域名验证
  * @param   {String}     license         -  营业执照
  * @param   {String}     name            -  用户名

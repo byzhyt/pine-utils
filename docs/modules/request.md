@@ -27,7 +27,7 @@
 
 #### Defined in
 
-request.ts:4
+[request.ts:4](https://github.com/byzhyt/pine-utils/blob/ffd389eb3428df548d6915e5e5ecf51280b6f477/src/request.ts#L4)
 
 ## Functions
 
@@ -47,7 +47,7 @@ request.ts:4
 
 #### Defined in
 
-request.ts:7
+[request.ts:7](https://github.com/byzhyt/pine-utils/blob/ffd389eb3428df548d6915e5e5ecf51280b6f477/src/request.ts#L7)
 
 ___
 
@@ -67,4 +67,4 @@ ___
 
 #### Defined in
 
-request.ts:35
+[request.ts:35](https://github.com/byzhyt/pine-utils/blob/ffd389eb3428df548d6915e5e5ecf51280b6f477/src/request.ts#L35)

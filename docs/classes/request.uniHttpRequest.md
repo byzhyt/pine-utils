@@ -60,7 +60,7 @@ songren
 
 #### Defined in
 
-request.ts:169
+[request.ts:169](https://github.com/byzhyt/pine-utils/blob/ffd389eb3428df548d6915e5e5ecf51280b6f477/src/request.ts#L169)
 
 ## Properties
 
@@ -74,7 +74,7 @@ request.ts:169
 
 #### Defined in
 
-request.ts:168
+[request.ts:168](https://github.com/byzhyt/pine-utils/blob/ffd389eb3428df548d6915e5e5ecf51280b6f477/src/request.ts#L168)
 
 ___
 
@@ -88,7 +88,7 @@ ___
 
 #### Defined in
 
-request.ts:67
+[request.ts:67](https://github.com/byzhyt/pine-utils/blob/ffd389eb3428df548d6915e5e5ecf51280b6f477/src/request.ts#L67)
 
 ___
 
@@ -102,7 +102,7 @@ ___
 
 #### Defined in
 
-request.ts:69
+[request.ts:69](https://github.com/byzhyt/pine-utils/blob/ffd389eb3428df548d6915e5e5ecf51280b6f477/src/request.ts#L69)
 
 ## Methods
 
@@ -126,7 +126,7 @@ request.ts:69
 
 #### Defined in
 
-request.ts:71
+[request.ts:71](https://github.com/byzhyt/pine-utils/blob/ffd389eb3428df548d6915e5e5ecf51280b6f477/src/request.ts#L71)
 
 ___
 
@@ -150,7 +150,7 @@ ___
 
 #### Defined in
 
-request.ts:121
+[request.ts:121](https://github.com/byzhyt/pine-utils/blob/ffd389eb3428df548d6915e5e5ecf51280b6f477/src/request.ts#L121)
 
 ___
 
@@ -174,7 +174,7 @@ ___
 
 #### Defined in
 
-request.ts:94
+[request.ts:94](https://github.com/byzhyt/pine-utils/blob/ffd389eb3428df548d6915e5e5ecf51280b6f477/src/request.ts#L94)
 
 ___
 
@@ -186,7 +186,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `options` | `RequestParams` |
+| `options` | `RequestEntity` |
 
 #### Returns
 
@@ -194,7 +194,7 @@ ___
 
 #### Defined in
 
-request.ts:176
+[request.ts:176](https://github.com/byzhyt/pine-utils/blob/ffd389eb3428df548d6915e5e5ecf51280b6f477/src/request.ts#L176)
 
 ___
 
@@ -214,4 +214,4 @@ ___
 
 #### Defined in
 
-request.ts:180
+[request.ts:180](https://github.com/byzhyt/pine-utils/blob/ffd389eb3428df548d6915e5e5ecf51280b6f477/src/request.ts#L180)

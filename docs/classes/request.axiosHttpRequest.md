@@ -54,7 +54,7 @@ description  请求
 
 #### Defined in
 
-request.ts:141
+[request.ts:141](https://github.com/byzhyt/pine-utils/blob/ffd389eb3428df548d6915e5e5ecf51280b6f477/src/request.ts#L141)
 
 ## Properties
 
@@ -68,7 +68,7 @@ request.ts:141
 
 #### Defined in
 
-request.ts:68
+[request.ts:68](https://github.com/byzhyt/pine-utils/blob/ffd389eb3428df548d6915e5e5ecf51280b6f477/src/request.ts#L68)
 
 ___
 
@@ -82,7 +82,7 @@ ___
 
 #### Defined in
 
-request.ts:67
+[request.ts:67](https://github.com/byzhyt/pine-utils/blob/ffd389eb3428df548d6915e5e5ecf51280b6f477/src/request.ts#L67)
 
 ___
 
@@ -96,7 +96,7 @@ ___
 
 #### Defined in
 
-request.ts:69
+[request.ts:69](https://github.com/byzhyt/pine-utils/blob/ffd389eb3428df548d6915e5e5ecf51280b6f477/src/request.ts#L69)
 
 ## Methods
 
@@ -120,7 +120,7 @@ request.ts:69
 
 #### Defined in
 
-request.ts:71
+[request.ts:71](https://github.com/byzhyt/pine-utils/blob/ffd389eb3428df548d6915e5e5ecf51280b6f477/src/request.ts#L71)
 
 ___
 
@@ -144,7 +144,7 @@ ___
 
 #### Defined in
 
-request.ts:121
+[request.ts:121](https://github.com/byzhyt/pine-utils/blob/ffd389eb3428df548d6915e5e5ecf51280b6f477/src/request.ts#L121)
 
 ___
 
@@ -168,7 +168,7 @@ ___
 
 #### Defined in
 
-request.ts:94
+[request.ts:94](https://github.com/byzhyt/pine-utils/blob/ffd389eb3428df548d6915e5e5ecf51280b6f477/src/request.ts#L94)
 
 ___
 
@@ -180,7 +180,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `options` | `RequestParams` |
+| `options` | `RequestEntity` |
 
 #### Returns
 
@@ -188,7 +188,7 @@ ___
 
 #### Defined in
 
-request.ts:148
+[request.ts:148](https://github.com/byzhyt/pine-utils/blob/ffd389eb3428df548d6915e5e5ecf51280b6f477/src/request.ts#L148)
 
 ___
 
@@ -208,4 +208,4 @@ ___
 
 #### Defined in
 
-request.ts:160
+[request.ts:160](https://github.com/byzhyt/pine-utils/blob/ffd389eb3428df548d6915e5e5ecf51280b6f477/src/request.ts#L160)
