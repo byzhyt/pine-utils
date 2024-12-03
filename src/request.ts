@@ -3,7 +3,11 @@ import { RequestEntity } from './entity';
 import { jsonToGetData, isObject, findObjectValue, statusError } from "./utils";
 export const contentType = "application/x-www-form-urlencoded";
 
-// axios请求参数组合
+/**
+ * @description axios请求参数组合
+ * @param options 
+ * @returns 
+ */
 export const axiosParamsConfig = (options: any): object => {
   let path = "";
   if (options?.queer) {
@@ -31,7 +35,13 @@ export const axiosParamsConfig = (options: any): object => {
   };
 };
 
-// uni请求参数组合
+
+/**
+ * @description uniParamsConfig 请求参数组合
+ * @param options 
+ * @returns 
+ */
+
 export const uniParamsConfig = (options: any): object => {
   let path = "";
   if (options?.queer) {

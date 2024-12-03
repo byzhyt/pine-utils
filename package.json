@@ -1,6 +1,6 @@
 {
   "name": "pine-utils",
-  "version": "0.0.72",
+  "version": "0.0.73",
   "description": "pine 公共方法",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
@@ -23,9 +23,7 @@
   "scripts": {
     "dev": "rimraf dist && rollup -c -w",
     "build": "rimraf dist && rollup -c",
-    "doc": "npx typedoc",
-    "test": "jest",
-    "coveralls": "jest --coverage"
+    "doc": "npx typedoc"
   },
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.25.4",
@@ -34,20 +32,15 @@
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.6",
-    "@types/jest": "^29.5.13",
     "@vue/test-utils": "^2.4.6",
-    "axios": "^1.6.8",
     "babel": "^6.23.0",
-    "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
     "rimraf": "^5.0.5",
     "rollup": "^4.10.0",
     "simple-git": "^3.22.0",
     "simple-git-hooks": "^2.10.0",
-    "typedoc": "^0.25.13",
-    "typedoc-plugin-frontmatter": "^1.0.0",
-    "typedoc-plugin-markdown": "^3.17.1",
-    "typedoc-vitepress-theme": "^1.0.1",
+    "typedoc": "^0.26.6",
+    "typedoc-plugin-markdown": "^4.2.9",
+    "typedoc-plugin-merge-modules": "^6.0.3",
     "typescript": "^5.6.2"
   },
   "simple-git-hooks": {
@@ -78,5 +71,8 @@
     "*.{js,ts,tsx,vue,md}": [
       "eslint --cache --fix"
     ]
+  },
+  "directories": {
+    "doc": "docs"
   }
 }

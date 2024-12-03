@@ -26,7 +26,7 @@ export default {
         exclude: "node_modules/**",
         include: "src/**"
     },
-    external: ["axios", 'rimraf', '@vue/test-utils', '@types/jest', 'typedoc-plugin-frontmatter', 'typedoc-plugin-markdown', 'typedoc', 'jest', 'jest-environment-jsdom'],
+    external: ["axios"],
     plugins: [
         rollupTypescript({
             tsconfig: "./tsconfig.json"
